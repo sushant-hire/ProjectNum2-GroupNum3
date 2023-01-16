@@ -1,10 +1,62 @@
 import React from 'react'
 import "./Pricing.css";
+import { useRecoilState } from "recoil";
+import { Data, Data2, Data3, Data4 } from '../../../../Atom/Atom';
+import { Link, useNavigate } from "react-router-dom";
 
 const Pricing = () => {
 
-    return (
+    const navigate = useNavigate();
+    const [sub, setSub] = useRecoilState(Data2); // 20
+    const [sub1, setSub1] = useRecoilState(Data3); // 50
+    const [sub2, setSub2] = useRecoilState(Data4);
 
+    const [login, setLogin] = useRecoilState(Data); //login
+
+
+    function confirmation() {
+        
+        if (login === true) {
+            window.confirm("Press Ok to confirm the plan");
+            if (window.confirm("Press Ok to confirm the plan") == true) {
+                // setShow(true);
+                setSub(true);
+                setSub2(sub2.plan = 15)
+                setLogin(true);
+                navigate("/activity");
+                alert(
+                    "You have successfully subscribed for this plan!"
+                );
+            } else {
+                setSub(false);
+            }
+        } else {
+            alert("Please Register First");
+        }
+    }
+
+    // function redirection() {}
+    function confirmationtwo() {
+        if (login === true) {
+            window.confirm("Press Ok to confirm the plan");
+            if (window.confirm("Press Ok to confirm the plan")) {
+                // setShow(true)
+                setSub1(true);
+                setSub2(sub2.plan = 30)
+                setLogin(true);
+                alert(
+                    "You have successfully subscribed for this plan!"
+                );
+                navigate("/activity1");
+            } else {
+                setSub1(false);
+            }
+        } else {
+            alert("Please Register First");
+        }
+    }
+
+    return (
         <section style={{ backgroundColor: 'darkred' }} id='pricing' className="PricingContainer">
             <div style={{ backgroundColor: 'white', borderRadius: '10px' }} className='DayPassContent'>
                 <br />
@@ -26,7 +78,15 @@ const Pricing = () => {
                     <br />
                 </ul>
                 <div style={{ textAlign: 'center' }}>
-                    <button className="DayPassButton" onClick={() => alert("You just clicked a button!")}>GET STARTED</button>
+                    {sub ? (
+                        <Link to="/activity">
+                            <button className="DayPassButton">Subscribed</button>
+                        </Link>
+                    ) : (
+                        <button onClick={confirmation} className="DayPassButton">
+                            Subscribe
+                        </button>
+                    )}
                 </div>
             </div>
             <div style={{ backgroundColor: 'white', borderRadius: '10px' }} className='MonthToMonthContent'>
@@ -49,7 +109,16 @@ const Pricing = () => {
                     <br />
                 </ul>
                 <div style={{ textAlign: 'center' }}>
-                    <button className="MonthToMonthButton" onClick={() => alert("You just clicked a button!")}>GET STARTED</button>
+                    {sub1 ? (
+                        <Link to="/activity1">
+                            {" "}
+                            <button className="MonthToMonthButton">Subscribed</button>
+                        </Link>
+                    ) : (
+                        <button onClick={confirmationtwo} className="MonthToMonthButton">
+                            Subscribe
+                        </button>
+                    )}
                 </div>
             </div>
             <div className='PricingContent'>

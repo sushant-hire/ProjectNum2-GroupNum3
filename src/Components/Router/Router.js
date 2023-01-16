@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Routes, Route } from "react-router-dom"
 import NavBar from '../NavBar/NavBar'
 import Assembly from '../Pages/About Us/Assembly/Assembly'
@@ -6,13 +6,20 @@ import Home from '../Pages/Home/Home'
 import Login from '../Pages/Login/Login'
 import Register from '../Pages/Register/Register'
 import ViewEntireTeam from '../Pages/About Us/Sections/View Entire Team/ViewEntireTeam'
-
-
+import Activity from '../Pages/Activity/Activity'
+import Activity1 from '../Pages/Activity/Activity1'
+// import { useLocation } from 'react-router-dom'
 
 const Router = () => {
+    // let Location = useLocation()
+    // console.log(Location)
+    // useEffect(() => {
+    //     document.querySelector(".RouterContainer")?.scrollTo(0, 0)
+    //     console.log("Route is changed now")
+    // }, [Location.pathname]);
 
     return (
-        <div>
+        <div className='RouterContainer'>
             <NavBar />
             <Routes>
                 <Route
@@ -34,6 +41,14 @@ const Router = () => {
                 <Route
                     path="/viewentireteam"
                     element={<ViewEntireTeam />}>
+                </Route>
+                <Route
+                    path="/activity"
+                    element={<Activity />}>
+                </Route>
+                <Route
+                    path="/activity1"
+                    element={<Activity1 />}>
                 </Route>
             </Routes>
         </div>

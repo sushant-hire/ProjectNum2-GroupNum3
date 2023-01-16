@@ -30,7 +30,6 @@ const TrainingPrograms = () => {
                         <div className='BodyBuildingHeading' class="carousel-caption">
                             <h1 style={{ color: 'red', fontSize: '90px', fontWeight: 'bolder' }}>Aerobics</h1>
                             <p style={{ color: 'red', fontSize: '30px', fontWeight: 'bold' }}>Training Program #3</p>
-
                         </div>
                     </div>
                 </div>
